@@ -42,6 +42,7 @@ function drawChart(tripsCount){
     var tripsRemaining = tripsCount - tripsCompleted;
     console.log(`tripsRemaining: ${tripsRemaining}`);
     var donutOptions = {
+      aspectRatio: 1.5,
       cutoutPercentage: 7, 
       legend: {position:'bottom', padding:5, labels: {pointStyle:'circle', usePointStyle:true}}
     };
