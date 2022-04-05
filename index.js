@@ -35,8 +35,8 @@ let reward = "";
 
 function drawChart(tripsCount){
     tripsCompleted = tripCountObj.total_count;
-    console.log(`tripsCount: ${tripsCount}`);
-    console.log(`tripsCompleted: ${tripsCompleted}`);
+    console.log(`tripsCount : ${tripsCount}`);
+    console.log(`tripsCompleted : ${tripsCompleted}`);
 
     var colors = ['#007bff','#28a745','#333333','#c3e6cb','#dc3545','#6c757d'];
     var tripsRemaining = tripsCount - tripsCompleted;
