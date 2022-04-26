@@ -34,17 +34,25 @@ let maxTripsPerday = 0;
 let reward = "";
 
 function drawChart(tripsCount){
+  document.getElementById("rules").innerHTML = "Rules";
+  document.getElementById("updated").innerHTML = "Updated November 19th, 2021";
+  document.getElementById("expresscarpool").innerHTML = "Express Carpool Check";
+  document.getElementById("mtc").style.display = "none";
     tripsCompleted = tripCountObj.total_count;
     console.log(`tripsCount : ${tripsCount}`);
     console.log(`tripsCompleted : ${tripsCompleted}`);
 
-    var colors = ['#007bff','#28a745','#333333','#c3e6cb','#dc3545','#6c757d'];
+    var colors = ['#28a745','#808080','#333333','#c3e6cb','#dc3545','#6c757d'];
     var tripsRemaining = tripsCount - tripsCompleted;
     console.log(`tripsRemaining: ${tripsRemaining}`);
     var donutOptions = {
       aspectRatio: 1.5,
       cutoutPercentage: 7, 
-      legend: {position:'bottom', padding:5, labels: {pointStyle:'circle', usePointStyle:true}}
+      plugins: {
+        legend: {
+            display: false
+        }
+    }
     };
     
     var chDonutData1 = {
@@ -61,7 +69,7 @@ function drawChart(tripsCount){
     var chDonut1 = document.getElementById("chDonut1");
     if (chDonut1) {
       new Chart(chDonut1, {
-          type: 'doughnut',
+          type: 'bar',
           data: chDonutData1,
           options: donutOptions
       });
