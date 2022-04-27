@@ -61,7 +61,12 @@ function drawChart(tripsCount){
           {
             backgroundColor: colors.slice(0,3),
             borderWidth: 2,
-            data: [tripsCompleted,tripsRemaining]
+            data: [tripsCompleted,tripsRemaining],
+            datalabels: {
+              color: 'black',
+              anchor: 'end',
+              align: 'top'
+            }
           }
         ]
     };
@@ -71,6 +76,7 @@ function drawChart(tripsCount){
       new Chart(chDonut1, {
           type: 'bar',
           data: chDonutData1,
+          plugins: [ChartDataLabels],
           options: donutOptions
       });
     }
