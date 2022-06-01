@@ -8,6 +8,7 @@ var firstDay = new Date(date.getFullYear(), date.getMonth(), 1).toISOString();
 var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0).toISOString();
 let tripCountObj = {};
 let statsObj = {};
+
 console.log(firstDay)
 console.log(lastDay)
 
@@ -41,6 +42,8 @@ function drawChart(tripsCount){
     tripsCompleted = tripCountObj.total_count;
     console.log(`tripsCount : ${tripsCount}`);
     console.log(`tripsCompleted : ${tripsCompleted}`);
+
+    if(tripsCompleted > tripsCount){ tripsCount = tripsCompleted; }
 
     var colors = ['#28a745','#808080','#333333','#c3e6cb','#dc3545','#6c757d'];
     var tripsRemaining = tripsCount - tripsCompleted;
@@ -84,7 +87,7 @@ function drawChart(tripsCount){
 
 function getTripCount(start_time, end_time, region, userId){
     const url = 'https://y3kjjhpgu3.execute-api.us-east-1.amazonaws.com/prod/dashboard/regions/get_trip_count';
-    var bodyMap = JSON.stringify({ "env": "dev" , "start_time": start_time, "end_time": end_time, "region": region, "user_id": userId})
+    var bodyMap = JSON.stringify({ "env": env , "start_time": start_time, "end_time": end_time, "region": region, "user_id": userId})
     //console.log(bodyMap);
     var h = {
       headers: {
