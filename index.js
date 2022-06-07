@@ -9,7 +9,7 @@ var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0).toISOString()
 let tripCountObj = {};
 let statsObj = {};
 let lang = "en";
-
+var dev_width;
 //Languages
 let rules = "";
 let updated = "";
@@ -30,7 +30,8 @@ window.onload = function() {
       userId = url.searchParams.get("user_id");
       env = url.searchParams.get("env");
       lang = url.searchParams.get("lang");
-      
+      dev_width = url.searchParams.get("disp_width");
+
       if(lang == null){ lang = "en"; }
       translate(lang);
       if(userId != null && region){
@@ -39,6 +40,10 @@ window.onload = function() {
         //getRegionTripCount(region);  
     }
       console.log(region+ " and "+userId);
+      console.log(`width: ${dev_width}`);
+      document.getElementById('container').style.maxWidth = dev_width+"px";
+      document.getElementById('container').style.margin = "auto";
+      document.getElementById('container').style.marginTop = "20px";
     } catch (err) {
       console.log("Issues with Parsing URL Parameter's - " + err);
     }
