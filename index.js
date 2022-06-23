@@ -44,6 +44,8 @@ window.onload = function() {
       document.getElementById('container').style.maxWidth = dev_width+"px";
       document.getElementById('container').style.margin = "auto";
       document.getElementById('container').style.marginTop = "20px";
+      //var element = document.getElementById("donutdiv");
+      //element.style.backgroundColor='#006400';
     } catch (err) {
       console.log("Issues with Parsing URL Parameter's - " + err);
     }
@@ -64,7 +66,7 @@ function drawChart(tripsCount){
 
     if(tripsCompleted > tripsCount){ tripsCount = tripsCompleted; }
 
-    var colors = ['#28a745','#808080','#333333','#c3e6cb','#dc3545','#6c757d'];
+    var colors = ['#28a745','#90ee90','#333333','#c3e6cb','#dc3545','#6c757d'];
     var tripsRemaining = tripsCount - tripsCompleted;
     console.log(`tripsRemaining: ${tripsRemaining}`);
     var donutOptions = {
@@ -72,13 +74,15 @@ function drawChart(tripsCount){
       cutoutPercentage: 7, 
       plugins: {
         legend: {
-            display: false
+            display: true,
+            position: 'bottom'
         }
-    }
+    },
+    events: []
     };
     
     var chDonutData1 = {
-        labels: [tripscompletedTxt, tripsRemainingTxt],
+        labels: [tripsCompleted + ' ' +tripscompletedTxt, tripsRemaining + ' ' + tripsRemainingTxt],
         datasets: [
           {
             backgroundColor: colors.slice(0,3),
@@ -86,8 +90,8 @@ function drawChart(tripsCount){
             data: [tripsCompleted,tripsRemaining],
             datalabels: {
               color: 'black',
-              anchor: 'end',
-              align: 'top'
+              anchor: 'center',
+              align: 'center'
             }
           }
         ]
@@ -96,7 +100,7 @@ function drawChart(tripsCount){
     var chDonut1 = document.getElementById("chDonut1");
     if (chDonut1) {
       new Chart(chDonut1, {
-          type: 'bar',
+          type: 'doughnut',
           data: chDonutData1,
           plugins: [ChartDataLabels],
           options: donutOptions
