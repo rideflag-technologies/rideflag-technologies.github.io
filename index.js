@@ -110,7 +110,7 @@ function drawChart(tripsCount){
 
 function getTripCount(start_time, end_time, region, userId){
     const url = 'https://y3kjjhpgu3.execute-api.us-east-1.amazonaws.com/prod/dashboard/regions/get_trip_count';
-    var bodyMap = JSON.stringify({ "env": env , "start_time": start_time, "end_time": end_time, "region": region, "user_id": userId})
+    var bodyMap = JSON.stringify({ "env": env , "end_time": end_time, "region": region, "user_id": userId})
     //console.log(bodyMap);
     var h = {
       headers: {
