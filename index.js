@@ -58,7 +58,12 @@ let reward = "";
 function drawChart(tripsCount){
   document.getElementById("rules").innerHTML = rules;
   document.getElementById("updated").innerHTML = updated;
-  document.getElementById("expresscarpool").innerHTML = expresscarpool;
+  if(region != "fle"){
+    document.getElementById("expresscarpool").innerHTML = expresscarpool;
+  }else{
+    document.getElementById("expresscarpool").innerHTML = "";
+  }
+  
   document.getElementById("mtc").style.display = "none";
     tripsCompleted = tripCountObj.total_count;
     console.log(`tripsCount : ${tripsCount}`);
@@ -157,7 +162,19 @@ function getTripCount(start_time, end_time, region, userId){
       else { regionRulesTxt = statsObj.rules; }
 
       document.getElementById('rewardPicture').src = statsObj.reward_image;
-      document.getElementById('rulesOffer').innerHTML = regionRulesTxt;
+      if(region == "fle"){
+        let fleRules = regionRulesTxt;
+        const myArray = fleRules.split(".");
+        let rule1 = myArray[0];
+        let rule2 = myArray[1];
+        let rule3 = myArray[2];
+        let rule4 = myArray[3];
+        let rule2b = rule2.bold();
+        document.getElementById('rulesOffer').innerHTML = rule1 + "<br>" + rule2b + "<br><br>" + rule3 + "<br>" + rule4;
+      }else{
+        document.getElementById('rulesOffer').innerHTML = regionRulesTxt;
+      }
+      
       tripsRegionCount = statsObj.tripsCount;
       drawChart(tripsRegionCount);
     });
@@ -177,7 +194,11 @@ function getRegionTripCount(region){
 function translate(lang){
   if(lang == "en"){
      rules = "Rules";
-     updated = "Updated November 19th, 2021";
+     if(region == "fle"){
+      updated = "Updated July 5th, 2022";
+     }else{
+      updated = "Updated November 19th, 2021";
+     }
      expresscarpool = "Express Carpool Check";
      tripscompletedTxt = "Trips Completed";
      tripsRemainingTxt = "Trips Remaining";
