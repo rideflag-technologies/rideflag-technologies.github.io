@@ -205,19 +205,31 @@ function translate(lang){
 
   }else if(lang == "fr"){
      rules = "Règles";
-     updated = "Mis à jour le 19 novembre 2021";
+     if(region == "fle"){
+      updated = "Mis à jour le 5 juillet 2022";
+     }else{
+      updated = "Mis à jour le 19 novembre 2021";
+     }
      expresscarpool = "Vérification de covoiturage express";
      tripscompletedTxt = "Voyages terminés";
      tripsRemainingTxt = "Voyages restants";
   }else if(lang == "es"){
     rules = "Normas";
-    updated = "Actualizado el 19 de noviembre de 2021";
+    if(region == "fle"){
+      updated = "Actualizado el 5 de julio de 2022";
+     }else{
+      updated = "Actualizado el 19 de noviembre de 2021";
+     }
     expresscarpool = "Cheque de viaje compartido exprés";
     tripscompletedTxt = "Viajes completados";
     tripsRemainingTxt = "Viajes restantes";
   }else{
     rules = "Rules";
-    updated = "Updated November 19th, 2021";
+    if(region == "fle"){
+      updated = "Updated July 5th, 2022";
+     }else{
+      updated = "Updated November 19th, 2021";
+     }
     expresscarpool = "Express Carpool Check";
     tripscompletedTxt = "Trips Completed";
     tripsRemainingTxt = "Trips Remaining";
